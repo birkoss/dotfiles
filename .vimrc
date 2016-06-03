@@ -33,7 +33,30 @@ set incsearch                   " Search as character are entered
 set ignorecase                  " Ignore case sensitivity on searches
 
 " Plugins
+" --------------------------------------------------------------------------------
 filetype plugin indent on
+
+" CtrlP
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
+
+" The Silver Searcher
+if executable('ag')
+	" Use ag over grep
+	set grepprg=ag\ --nogroup\ --nocolor
+	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" Key map
+" -----------------------------------------------------------------------------
+let mapleader = "\<Space>"
+
+nnoremap <Leader>f :CtrlP<CR>
+
+" Space + g = Search for the word under the cursor and show the QuickFix List
+nnoremap <Leader>g :grep! "\b<cword>\b"<CR>:cw<CR>
+" Auto close the QuickFix List when selecting an entry
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
 " Bad Habits Removal
 "noremap <Up> <NOP>
