@@ -20,3 +20,7 @@ Local VIM config
 ----------------
 
 Create a **~/.vimrc_local**
+
+Quicker search (Optional)
+
+apt install silversearcher-ag
