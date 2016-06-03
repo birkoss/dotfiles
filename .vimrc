@@ -1,3 +1,6 @@
+" Load all plugins in ~/.vim/bundle
+execute pathogen#infect()
+
 set nocompatible
 
 " Prevent hidden buffer instead of annoying warning messages
@@ -28,6 +31,9 @@ hi SpecialKey ctermfg=Black
 " Searching
 set incsearch                   " Search as character are entered
 set ignorecase                  " Ignore case sensitivity on searches
+
+" Plugins
+filetype plugin indent on
 
 " Bad Habits Removal
 "noremap <Up> <NOP>
