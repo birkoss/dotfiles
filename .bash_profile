@@ -1,7 +1,3 @@
-# Force bash prompt with colors
-###############################################################################
-export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
 # Remote Mount
 ###############################################################################
 rmount() {
@@ -43,13 +39,13 @@ rumount() {
 			# Unmount
 			[[ $(mount | grep "Mounts/$dir") ]] && fusermount -u ~/Mounts/$dir
 			# Delete if empty
-			[[ $(ls ~/Mounts/$dir) ]] || rm -rf ~/Mounts/$dir
+			[[ $(ls ~/Mounts/$dir) ]] || rm -d ~/Mounts/$dir
 		done
 	else
 		# Unmount
 		[[ $(mount | grep "Mounts/$1") ]] && fusermount -u ~/Mounts/$1	
 		# Delete if empty
-		[[ $(ls ~/Mounts/$1) ]] || rm -rf ~/Mounts/$1
+		[[ $(ls ~/Mounts/$1) ]] || rm -d ~/Mounts/$1
 	fi
 }
 
