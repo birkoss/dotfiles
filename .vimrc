@@ -15,11 +15,12 @@ set tabstop=2                   " Visual space per tab
 set softtabstop=2               " Space per tab while editing
 set shiftwidth=2                " Space added in INSERT mode
 set noexpandtab                 " Tab are space
-set autoindent
+" set autoindent
 
 " UI
 set number                      " Show line number
 set cursorline                  " Highlight the current line
+set relativenumber              " Show relative line number from the current line
 
 set list                        " Show invisible characters
 set listchars=tab:▸\ ,eol:¬     " Replace the invisible characters with those
@@ -34,7 +35,7 @@ set ignorecase                  " Ignore case sensitivity on searches
 
 " Plugins
 " --------------------------------------------------------------------------------
-filetype plugin indent on
+filetype plugin indent off
 
 " CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
