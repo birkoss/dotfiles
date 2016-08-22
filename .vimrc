@@ -59,6 +59,8 @@ nnoremap <Leader>g :grep! "\b<cword>\b"<CR>:cw<CR>
 " Auto close the QuickFix List when selecting an entry
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
+nnoremap <F5> :set list!<CR> :set number!<CR> :set relativenumber!<CR>
+
 " Bad Habits Removal
 "noremap <Up> <NOP>
 "noremap <Down> <NOP>
