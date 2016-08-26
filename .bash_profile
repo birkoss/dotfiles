@@ -21,13 +21,15 @@ rmount() {
 			mount_folder="public_html/"
 		fi
 
-		sshfs $ssh_name:$mount_folder ~/Mounts/$ssh_name && echo "~/Mounts/$ssh_name:$mount_folder mounted!" || (sshfs $ssh_name: ~/Mounts/$ssh_name && echo "~/Mounts/$ssh_name mounted!")
+		# If mount folder is empty
+		if ! [[ $(ls ~/Mounts/$ssh_name) ]]; then
+			sshfs $ssh_name:$mount_folder ~/Mounts/$ssh_name && echo "~/Mounts/$ssh_name:$mount_folder mounted!" || (sshfs $ssh_name: ~/Mounts/$ssh_name && echo "~/Mounts/$ssh_name mounted!")
+		fi
+		cd ~/Mounts/$ssh_name
 	else
 		echo "No entry found for $ssh_name"
 		return 1
 	fi
-
-	cd ~/Mounts/$ssh_name
 }
 
 # Remove Unmount
