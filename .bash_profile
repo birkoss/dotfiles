@@ -26,6 +26,8 @@ rmount() {
 		echo "No entry found for $ssh_name"
 		return 1
 	fi
+
+	cd ~/Mounts/$ssh_name
 }
 
 # Remove Unmount
