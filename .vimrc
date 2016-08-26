@@ -37,8 +37,8 @@ set ignorecase                  " Ignore case sensitivity on searches
 " --------------------------------------------------------------------------------
 filetype plugin indent off
 
-" CtrlP
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
+" CtrlP Ignore List
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*,*.jpg,*.gif,*.bmp,*.ico
 
 " The Silver Searcher
 if executable('ag')
@@ -52,13 +52,15 @@ endif
 " -----------------------------------------------------------------------------
 let mapleader = "\<Space>"
 
-nnoremap <Leader>f :CtrlP<CR>
+" Use CtrlP in the Current Working Directory (Quicker)
+nnoremap <Leader>f :CtrlPCurWD<CR>
 
 " Space + g = Search for the word under the cursor and show the QuickFix List
 nnoremap <Leader>g :grep! "\b<cword>\b"<CR>:cw<CR>
 " Auto close the QuickFix List when selecting an entry
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
+" F5 = Toggle visible characters/line numbers
 nnoremap <F5> :set list!<CR> :set number!<CR> :set relativenumber!<CR>
 
 " Bad Habits Removal
