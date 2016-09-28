@@ -10,3 +10,4 @@ _ssh()
 	return 0
 }
 complete -F _ssh rmount
+complete -F _ssh rumount

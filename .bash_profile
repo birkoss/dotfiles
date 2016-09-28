@@ -11,10 +11,18 @@ rmount() {
 	# - Else, use the remaining value after the :
 	[[ ${1%:} == $ssh_name ]] && mount_folder='' || mount_folder=${1##*:}
 
+	# Get the ssh name in SSH config, if available
+	custom_folder=$(grep -i "host $ssh_name" ~/.ssh/config)
+
 	# If the ssh name is found in the SSH config
-	if [[ $(grep -i "host $ssh_name" ~/.ssh/config) != '' ]]; then
+	if [[ $custom_folder != '' ]]; then
 		# Create the folder (no error if existing)
 		mkdir -p ~/Mounts/$ssh_name > /dev/null
+
+		# If the SSH config file has a comment on the Host line
+		if [[ $( echo $custom_folder | cut -d "#" -f2 ) != "Host $ssh_name" ]]; then
+			mount_folder=$( echo $custom_folder | cut -d "#" -f2 )
+		fi
 
 		# If no mount folder is specified, use a default one
 		if [[ $mount_folder == "" ]]; then
