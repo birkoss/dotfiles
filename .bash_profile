@@ -12,7 +12,7 @@ rmount() {
 	[[ ${1%:} == $ssh_name ]] && mount_folder='' || mount_folder=${1##*:}
 
 	# Get the ssh name in SSH config, if available
-	custom_folder=$(grep -i "host $ssh_name" ~/.ssh/config)
+	custom_folder=$(grep -i "host $ssh_name" -m1 ~/.ssh/config)
 
 	# If the ssh name is found in the SSH config
 	if [[ $custom_folder != '' ]]; then
