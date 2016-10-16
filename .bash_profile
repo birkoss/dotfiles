@@ -1,3 +1,6 @@
+alias tmux-load="tmux a -t"
+alias tmux-new="tmux new -s"
+
 # Remote Mount
 ###############################################################################
 rmount() {
@@ -60,17 +63,3 @@ rumount() {
 		[[ $(ls ~/Mounts/$1) ]] || rm -d ~/Mounts/$1
 	fi
 }
-
-
-                # Get the default port from the ssh config
-                # Set 22 as the default port if none is specified
-#                mount_port=$(cat .ssh/config | sed -n "/Host $ssh_name/I,/^\$/p" | awk 'tolower($1) == "port" { print $2 }')
-#                if [[ $mount_port == "" ]]; then
-#                        mount_port="22"
-#                fi
-
-                # If no mount folder is specified...
-                # Try to find one in the ssh config
-#                if [[ $mount_folder == "" ]]; then
-#                        mount_folder=$(cat .ssh/config | sed -n "/Host $ssh_name/I,/^\$/p" | awk 'tolower($1) == "folder" { print $2 }')
-#                fi
