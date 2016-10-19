@@ -1,3 +1,7 @@
+if [ -f ~/.bash_profile_local ]; then
+    . ~/.bash_profile_local
+fi
+
 # tmux quick alias
 alias tmux-load="tmux a -t"
 alias tmux-new="tmux new -s"
