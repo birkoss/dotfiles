@@ -35,6 +35,13 @@ hi SpecialKey ctermfg=Black
 set incsearch                   " Search as character are entered
 set ignorecase                  " Ignore case sensitivity on searches
 
+" Search in subfolders (recursively)
+set path+=**
+
+" Display all matching files when we tab complete 
+set wildmenu
+
+
 " Plugins
 " --------------------------------------------------------------------------------
 filetype plugin indent off

@@ -1,6 +1,3 @@
-if [ -f ~/.bash_profile_local ]; then
-    . ~/.bash_profile_local
-fi
 
 # tmux quick alias
 alias tmux-load="tmux a -t"
@@ -68,3 +65,7 @@ rumount() {
 		[[ $(ls ~/Mounts/$1) ]] || rm -d ~/Mounts/$1
 	fi
 }
+
+if [ -f ~/.bash_profile_local ]; then
+    . ~/.bash_profile_local
+fi
