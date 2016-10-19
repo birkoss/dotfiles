@@ -41,6 +41,12 @@ set path+=**
 " Display all matching files when we tab complete 
 set wildmenu
 
+" Only display the cursorline in the active split window
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
 
 " Plugins
 " --------------------------------------------------------------------------------
