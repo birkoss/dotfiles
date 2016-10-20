@@ -16,7 +16,9 @@ set tabstop=2                   " Visual space per tab
 set softtabstop=2               " Space per tab while editing
 set shiftwidth=2                " Space added in INSERT mode
 set noexpandtab                 " Tab are space
-" set autoindent
+
+set autoindent
+"set smartindent
 
 " UI
 set title                       " Change the Terminal Title for the filename
@@ -41,12 +43,19 @@ set path+=**
 " Display all matching files when we tab complete 
 set wildmenu
 
+" Show the column cursor
+set cursorcolumn  
+highlight CursorColumn guibg=lightblue ctermbg=236
+
 " Only display the cursorline in the active split window
 augroup CursorLine
     au!
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
     au WinLeave * setlocal nocursorline
+    au WinLeave * setlocal nocursorcolumn
 augroup END
+
 
 " Plugins
 " --------------------------------------------------------------------------------
@@ -56,6 +65,8 @@ filetype plugin indent off
 " -----------------------------------------------------------------------------
 let mapleader = "\<Space>"
 
+" F2 = Toggle paste mode as formatted
+nnoremap <F2> :set paste!<CR>
 
 " F5 = Toggle visible characters/line numbers
 nnoremap <F5> :set list!<CR> :set number!<CR> :set relativenumber!<CR>
@@ -76,4 +87,3 @@ try
 catch
 	" Nothing to see here
 endtry 
-
