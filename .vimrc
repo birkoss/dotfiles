@@ -71,6 +71,9 @@ nnoremap <F2> :set paste!<CR>
 " F5 = Toggle visible characters/line numbers
 nnoremap <F5> :set list!<CR> :set number!<CR> :set relativenumber!<CR>
 
+" F4 = Duplicate the current line, and comment it
+nnoremap <F4> yypI//<ESC>
+
 " Bad Habits Removal
 noremap <Up> <NOP>
 noremap <Down> <NOP>
