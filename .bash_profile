@@ -3,6 +3,7 @@
 alias tmux-load="tmux a -t"
 alias tmux-new="tmux new -s"
 
+
 # Remote Mount
 ###############################################################################
 rmount() {
@@ -76,6 +77,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+whois_expiration() {
+	whois $1 | grep -i expi
+}
+alias expi=whois_expiration
 
 if [ -f ~/.bash_profile_local ]; then
     . ~/.bash_profile_local

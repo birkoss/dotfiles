@@ -60,6 +60,9 @@ augroup CursorLine
 augroup END
 
 
+" Commands
+command IP :call ShowPhpIP()
+
 " Plugins
 " --------------------------------------------------------------------------------
 filetype plugin indent off
@@ -86,6 +89,13 @@ inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
+
+function! ShowPhpIP(...)
+  let ip = system('curl -s http://ipv4.myexternalip.com/raw | tr --delete "\n"')
+	:put ='if( $_SERVER[\"remote_addr\"] == \"'.ip.'\" ) {'
+endfunction
+
+
 
 " Load a local .vimrc_local to allow local customization
 try 
