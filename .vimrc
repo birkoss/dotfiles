@@ -43,6 +43,9 @@ set path+=**
 " Display all matching files when we tab complete 
 set wildmenu
 
+" Show the current file in the status
+set laststatus=2
+
 " Show the column cursor
 set cursorcolumn  
 highlight CursorColumn guibg=lightblue ctermbg=236
