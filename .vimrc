@@ -61,7 +61,8 @@ augroup END
 
 
 " Commands
-command IP :call ShowPhpIP()
+command! IP :call ShowPhpIP()
+command! Reload :so $MYVIMRC
 
 " Plugins
 " --------------------------------------------------------------------------------
