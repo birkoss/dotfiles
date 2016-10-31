@@ -93,7 +93,7 @@ inoremap <Right> <NOP>
 
 function! ShowPhpIP(...)
   let ip = system('curl -s http://ipv4.myexternalip.com/raw | tr --delete "\n"')
-	:put ='if( $_SERVER[\"remote_addr\"] == \"'.ip.'\" ) {'
+	:put ='if( $_SERVER[\"REMOTE_ADDR\"] == \"'.ip.'\" ) {'
 endfunction
 
 
