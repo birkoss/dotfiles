@@ -61,7 +61,8 @@ augroup END
 
 
 " Commands
-command! IP :call ShowPhpIP()
+command! IP :call ShowPhpIP("O")
+command! Ip :call ShowPhpIP("o")
 command! Reload :so $MYVIMRC
 
 " Plugins
@@ -93,9 +94,9 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 
-function! ShowPhpIP(...)
+function! ShowPhpIP(position, ...)
   let ip = system('curl -s http://ipv4.myexternalip.com/raw | tr --delete "\n"')
-	:put ='if( $_SERVER[\"remote_addr\"] == \"'.ip.'\" ) {'
+  execute "normal! ".a:position."if( $_SERVER[\"REMOTE_ADDR\"] == \"".ip."\" ) {"
 endfunction
 
 au FileType html setl sw=2 sts=2 et
