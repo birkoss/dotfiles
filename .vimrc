@@ -99,8 +99,6 @@ function! ShowPhpIP(position, ...)
   execute "normal! ".a:position."if( $_SERVER[\"REMOTE_ADDR\"] == \"".ip."\" ) {"
 endfunction
 
-au FileType html setl sw=2 sts=2 et
-au FileType css setl sw=2 sts=2 et
 
 " Load a local .vimrc_local to allow local customization
 try 
