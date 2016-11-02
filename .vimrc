@@ -12,10 +12,10 @@ syntax on                       " Color syntaxing
 colorscheme onedark             " Color scheme, torte
 
 " Spaces and Tabs
-set tabstop=2                   " Visual space per tab
-set softtabstop=2               " Space per tab while editing
-set shiftwidth=2                " Space added in INSERT mode
-set noexpandtab                 " Tab are space
+set tabstop=4                   " Visual space per tab
+set softtabstop=4               " Space per tab while editing
+set shiftwidth=4                " Space added in INSERT mode
+set expandtab                   " Tab are space
 
 set autoindent
 "set smartindent
@@ -66,7 +66,7 @@ command! Reload :so $MYVIMRC
 
 " Plugins
 " --------------------------------------------------------------------------------
-filetype plugin indent off
+filetype plugin indent on
 
 " Key map
 " -----------------------------------------------------------------------------
@@ -80,6 +80,8 @@ nnoremap <F5> :set list!<CR> :set number!<CR> :set relativenumber!<CR>
 
 " F4 = Duplicate the current line, and comment it
 nnoremap <F4> yypI//<ESC>
+
+nnoremap <F3> :normal I/*<ESC>A*/<ESC>
 
 " Bad Habits Removal
 noremap <Up> <NOP>
@@ -96,7 +98,8 @@ function! ShowPhpIP(...)
 	:put ='if( $_SERVER[\"remote_addr\"] == \"'.ip.'\" ) {'
 endfunction
 
-
+au FileType html setl sw=2 sts=2 et
+au FileType css setl sw=2 sts=2 et
 
 " Load a local .vimrc_local to allow local customization
 try 
