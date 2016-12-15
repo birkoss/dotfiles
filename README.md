@@ -6,7 +6,7 @@ git clone https://github.com/birkoss/dotfiles.git
 Update .bashrc
 --------------
 
-echo "[[ -r ~/.bash_profile ]] && . ~/.bash_profile" >> .bashrc
+echo "[[ -r ~/.bash_profile ]] && . ~/.bash_profile" >> ~/.bashrc
 
 Create symlinks
 ---------------
