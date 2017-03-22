@@ -19,3 +19,4 @@ _tmux()
   COMPREPLY=( $(compgen -W "$(tmux list-sessions 2>/dev/null | awk -F: '{ print $1 }')" -- "$session") )
 }
 complete -F _tmux tmux-load
+complete -F _tmux tm

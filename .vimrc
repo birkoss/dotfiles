@@ -33,6 +33,12 @@ set listchars=tab:▸\ ,eol:¬     " Replace the invisible characters with those
 hi NonText ctermfg=Black
 hi SpecialKey ctermfg=Black
 
+" Set colors for Folded block (Based on https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
+hi Folded ctermfg=255 ctermbg=001
+
+" Current Split status line
+hi StatusLine ctermfg=255 ctermbg=001 cterm=NONE
+
 " Searching
 set incsearch                   " Search as character are entered
 set ignorecase                  " Ignore case sensitivity on searches
@@ -49,6 +55,10 @@ set laststatus=2
 " Show the column cursor
 set cursorcolumn  
 highlight CursorColumn guibg=lightblue ctermbg=236
+
+" Folding based on indentation
+set foldmethod=indent
+set foldlevelstart=5
 
 " Only display the cursorline in the active split window
 augroup CursorLine
@@ -92,8 +102,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Focus on one split in another TAB
 map <Leader>f :tabe %<CR>
-
 
 " Bad Habits Removal
 noremap <Up> <NOP>
@@ -110,6 +120,8 @@ function! ShowPhpIP(position, ...)
   execute "normal! ".a:position."if( $_SERVER[\"REMOTE_ADDR\"] == \"".ip."\" ) {"
 endfunction
 
+" Always resize the splits when Vim is resized
+autocmd VimResized * execute "normal! \<c-w>="
 
 " Load a local .vimrc_local to allow local customization
 try 

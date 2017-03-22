@@ -3,6 +3,24 @@
 alias tmux-load="tmux a -t"
 alias tmux-new="tmux new -s"
 
+tm() {
+    if [ $# -eq 0 ]
+    then
+        session_name="local"
+    else
+        session_name="$1"
+    fi
+
+    session_found=$(tmux list-sessions | awk -v session_name="$session_name" -F: '$1 == session_name {print $1}' | wc -l)
+
+    if [ $session_found == 1 ]
+    then
+        tmux-load "$session_name" 
+    else
+        tmux-new "$session_name"
+    fi
+    #echo "SESSION: $session_name : $session_found"
+}
 
 # Remote Mount
 ###############################################################################
