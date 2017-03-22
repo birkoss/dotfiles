@@ -104,11 +104,6 @@ set pastetoggle=<F2>
 " F5 = Toggle visible characters/line numbers
 nnoremap <F5> :set list!<CR> :set number!<CR> :set relativenumber!<CR>
 
-" F4 = Duplicate the current line, and comment it
-nnoremap <F4> yypI//<ESC>
-
-nnoremap <F3> :normal I/*<ESC>A*/<ESC>
-
 " Better SPLIT switching (Skip the W in the default way)
 map <C-j> <C-W>j
 map <C-k> <C-W>k
