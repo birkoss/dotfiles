@@ -1,3 +1,7 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Load all plugins in ~/.vim/bundle
 execute pathogen#infect()
 
@@ -18,26 +22,6 @@ set shiftwidth=4                " Space added in INSERT mode
 set expandtab                   " Tab are space
 
 set autoindent
-"set smartindent
-
-" UI
-set title                       " Change the Terminal Title for the filename
-set number                      " Show line number
-set cursorline                  " Highlight the current line
-set relativenumber              " Show relative line number from the current line
-
-set list                        " Show invisible characters
-set listchars=tab:▸\ ,eol:¬     " Replace the invisible characters with those
-
-" Set colors for New Line and Tab character
-hi NonText ctermfg=Black
-hi SpecialKey ctermfg=Black
-
-" Set colors for Folded block (Based on https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
-hi Folded ctermfg=255 ctermbg=001
-
-" Current Split status line
-hi StatusLine ctermfg=255 ctermbg=001 cterm=NONE
 
 " Searching
 set incsearch                   " Search as character are entered
@@ -52,13 +36,38 @@ set wildmenu
 " Show the current file in the status
 set laststatus=2
 
-" Show the column cursor
-set cursorcolumn  
-highlight CursorColumn guibg=lightblue ctermbg=236
-
 " Folding based on indentation
 set foldmethod=indent
 set foldlevelstart=5
+
+" Always resize the splits when Vim is resized
+autocmd VimResized * execute "normal! \<c-w>="
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UI
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set title                       " Change the Terminal Title for the filename
+set number                      " Show line number
+set cursorline                  " Highlight the current line
+set relativenumber              " Show relative line number from the current line
+
+set list                        " Show invisible characters
+set listchars=tab:▸\ ,eol:¬     " Replace the invisible characters with those
+
+" Set colors for New Line and Tab character
+highlight NonText ctermfg=Black
+highlight SpecialKey ctermfg=Black
+
+" Set colors for Folded block (Based on https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
+highlight Folded ctermfg=255 ctermbg=001
+
+" Current Split status line
+highlight StatusLine ctermfg=255 ctermbg=001 cterm=NONE
+
+" Show the column cursor
+set cursorcolumn  
+highlight CursorColumn guibg=lightblue ctermbg=236
 
 " Only display the cursorline in the active split window
 augroup CursorLine
@@ -69,24 +78,28 @@ augroup CursorLine
     au WinLeave * setlocal nocursorcolumn
 augroup END
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 command! IP :call ShowPhpIP("O")
 command! Ip :call ShowPhpIP("o")
 command! Reload :so $MYVIMRC
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
-" --------------------------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 filetype plugin indent on
 
-" Key map
-" -----------------------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key Mapping
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let mapleader = "\<Space>"
 
 " F2 = Toggle paste mode as formatted
-" nnoremap <F2> :set paste!<CR>
 set pastetoggle=<F2>
-
 
 " F5 = Toggle visible characters/line numbers
 nnoremap <F5> :set list!<CR> :set number!<CR> :set relativenumber!<CR>
@@ -115,15 +128,20 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Functions
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 function! ShowPhpIP(position, ...)
   let ip = system('curl -s http://ipv4.myexternalip.com/raw | tr --delete "\n"')
   execute "normal! ".a:position."if( $_SERVER[\"REMOTE_ADDR\"] == \"".ip."\" ) {"
 endfunction
 
-" Always resize the splits when Vim is resized
-autocmd VimResized * execute "normal! \<c-w>="
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load a local .vimrc_local to allow local customization
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 try 
 	source ~/.vimrc_local
 catch
