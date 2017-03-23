@@ -113,6 +113,10 @@ map <C-l> <C-W>l
 " Focus on one split in another TAB
 map <Leader>f :tabe %<CR>
 
+" Copy and Paste support
+map <Leader>c :'<,'>w !xsel -b<CR><CR>
+map <Leader>v :r !xsel -o -b<CR>
+
 " Bad Habits Removal
 noremap <Up> <NOP>
 noremap <Down> <NOP>
