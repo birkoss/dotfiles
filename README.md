@@ -15,6 +15,7 @@ Create symlinks
 * ln -s {/path/to/dotfiles/.vim} ~/.vim
 * ln -s {/path/to/dotfiles/.bash_completion} ~/.bash_completion
 * ln -s {/path/to/dotfiles/.bash_profile} ~/.bash_profile
+* ln -s {/path/to/dotfiles/.tmux.conf} ~/.tmux.conf
 
 Local VIM config
 ----------------
